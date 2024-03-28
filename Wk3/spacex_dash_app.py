@@ -111,8 +111,8 @@ def update_output_div(input_value):
             values='Launch Site',
             ),
         )
-
     return pie_graph
+
 # TASK 4:
 # Add a callback function for `site-dropdown` and `payload-slider` as inputs, `success-payload-scatter-chart` as output
 @app.callback(
@@ -122,7 +122,6 @@ def update_output_div(input_value):
 )
 def update_output_div(site,payload):
     if site == 'All':
-        # TODO: select payload by payload input
         site_payload = spacex_df[['Payload Mass (kg)','class','Booster Version Category']]
         site_payload = site_payload[site_payload['Payload Mass (kg)'].between(payload[0],payload[1])]
 
@@ -139,8 +138,6 @@ def update_output_div(site,payload):
 
         )
     else:
-        # TODO: Select site and payload
-        #site_success = spacex_df[spacex_df['Launch Site'] == input_value]
         site_payload = spacex_df[spacex_df['Launch Site'] == site]
         site_payload = site_payload[['Payload Mass (kg)','class','Booster Version Category']]
         site_payload = site_payload[site_payload['Payload Mass (kg)'].between(payload[0],payload[1])]
@@ -157,7 +154,6 @@ def update_output_div(site,payload):
             ),
 
         )
-
     return scatter_g
 
 # Run the app
